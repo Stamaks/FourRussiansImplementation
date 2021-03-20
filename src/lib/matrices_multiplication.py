@@ -5,14 +5,14 @@ import os
 MAGIC_CONSTANT = 10  # if log_n > magic_constant, we do not dump precalculations to the file
 
 
-def log(size_n):
+def rounded_log(size_n):
     return math.ceil(math.log2(size_n))
 
 
 def precalculate(size_n):  # O(2^(log_n*2)*log_n) if not in the data folder
     set_zero = set()
     set_one = set()
-    log_n = log(size_n)
+    log_n = rounded_log(size_n)
     if log_n <= 10 and os.path.exists(f'data/{log_n}'):
         pass  # TODO: подкачка из файла
     else:
@@ -66,7 +66,7 @@ def run_four_russians(matrix_a, matrix_b, size_n):
 
     set_zero, set_one = precalculate(size_n)
 
-    log_n = log(size_n)
+    log_n = rounded_log(size_n)
 
     matrix_c = [[0] * size_n for i in range(size_n)]
 

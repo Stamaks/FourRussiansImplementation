@@ -1,4 +1,4 @@
-# Implementation of Four Russians Algorithm for boolean square matrices multiplication
+# Implementation of Four Russian's Algorithm for boolean square matrices multiplication
 
 ## Quick start
 Clone the repository, open the project folder in your terminal and run:

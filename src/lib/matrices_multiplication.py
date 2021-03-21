@@ -17,7 +17,7 @@ def precalculate(vector_size):  # O(2^(vector_size*2)*vector_size) if not in the
     else:
         for i in range(2 ** vector_size):
             for j in range(i, 2 ** vector_size):
-                bit_and = i & j  # O(1)
+                bit_and = i & j  # O(c) - we do not actually know c
                 if bin(bit_and).count('1') % 2:  # O(vector_size)
                     set_one.add(bit_and)  # O(1)
 
@@ -34,13 +34,13 @@ def get_cmprsd_matr_size(size_n, vector_size):
     return math.ceil(size_n / vector_size)
 
 
-def get_compressed_matrix(matrix, size_n, vector_size, is_first_matrix=True):
+def get_compressed_matrix(matrix, size_n, vector_size, is_first_matrix=True):  # O(n^2)
     size_cmprsd = get_cmprsd_matr_size(size_n, vector_size)
 
     if is_first_matrix:
-        cmprsd_matrix = [[0] * size_cmprsd for i in range(size_n)]
+        cmprsd_matrix = [[0] * size_cmprsd for _ in range(size_n)]
     else:
-        cmprsd_matrix = [[0] * size_n for i in range(size_cmprsd)]
+        cmprsd_matrix = [[0] * size_n for _ in range(size_cmprsd)]
 
     for i in range(size_n):
         for cmprsd_ind, j in enumerate(range(0, size_n, vector_size)):  # from 0 to n, step log_n
@@ -73,7 +73,7 @@ def run_four_russians(matrix_a, matrix_b, size_n):
     cmprsd_matrix_a = get_compressed_matrix(matrix_a, size_n, log_n, is_first_matrix=True)
     cmprsd_matrix_b = get_compressed_matrix(matrix_b, size_n, log_n, is_first_matrix=False)
 
-    for i in range(size_n):
+    for i in range(size_n):  # O(n^3/logn)
         for j in range(size_n):
             mult_sum = 0
             for k in range(get_cmprsd_matr_size(size_n, log_n)):

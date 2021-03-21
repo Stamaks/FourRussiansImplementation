@@ -4,7 +4,7 @@ import json
 import os
 
 
-TEST_CASES_PATH = 'ut/test_data/test_run_four_russians'
+TEST_CASES_PATH = 'test_data/test_run_four_russians'
 
 
 def test_rounded_log():
@@ -54,6 +54,7 @@ def load_test_case(test_case_path):
 
 
 def test_check_test_data():
+    raise Exception(os.listdir())
     for test_case in os.listdir(TEST_CASES_PATH):
         matrix_a, matrix_b, matrix_c, size_n = load_test_case(os.path.join(TEST_CASES_PATH, test_case))
 

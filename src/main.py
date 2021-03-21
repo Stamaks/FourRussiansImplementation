@@ -1,10 +1,6 @@
 from lib.matrices_multiplication import run_four_russians
 
 
-# TODO: Add README
-# TODO: проверить на асимптотику
-
-
 def get_matrix(size_n):
     matrix = [list(map(int, input().split())) for _ in range(size_n)]
     check_boolean = all(i == 0 or i == 1 for row in matrix for i in row)

@@ -4,7 +4,7 @@ import json
 import os
 
 
-TEST_CASES_PATH = 'test_data/test_run_four_russians'
+TEST_CASES_PATH = 'ut/test_data/test_run_four_russians'
 
 
 def test_rounded_log():
